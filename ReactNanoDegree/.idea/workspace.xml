@@ -17,41 +17,33 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/contacts/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/contacts/src/App.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="45" column="39" lean-forward="true" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="39" />
+            <state relative-caret-position="120">
+              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding>
-                <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ListContacts.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/contacts/src/ListContacts.js">
+      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/contacts/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
+            <state relative-caret-position="15">
+              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ContactsAPI.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/contacts/src/utils/ContactsAPI.js">
+      <file leaf-file-name="ListContacts.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/contacts/src/ListContacts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="21" lean-forward="false" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
-              <folding />
+            <state relative-caret-position="200">
+              <caret line="20" column="30" lean-forward="false" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -80,15 +72,16 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>person</find>
+      <find>props</find>
     </findStrings>
     <replaceStrings>
       <replace>contact</replace>
+      <replace>this.props</replace>
     </replaceStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/contacts/src/index.js" />
         <option value="$PROJECT_DIR$/contacts/src/ImageInputs.js" />
         <option value="$PROJECT_DIR$/contacts/src/icons/arrow-back.svg" />
         <option value="$PROJECT_DIR$/contacts/src/icons/cancel.svg" />
@@ -96,9 +89,10 @@
         <option value="$PROJECT_DIR$/contacts/src/index.css" />
         <option value="$PROJECT_DIR$/contacts/src/icons/person-add.svg" />
         <option value="$PROJECT_DIR$/contacts/src/icons/person.svg" />
+        <option value="$PROJECT_DIR$/contacts/src/App.js" />
+        <option value="$PROJECT_DIR$/contacts/src/index.js" />
         <option value="$PROJECT_DIR$/contacts/src/utils/ContactsAPI.js" />
         <option value="$PROJECT_DIR$/contacts/src/ListContacts.js" />
-        <option value="$PROJECT_DIR$/contacts/src/App.js" />
       </list>
     </option>
   </component>
@@ -188,18 +182,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1508901923321</updated>
-      <workItem from="1508901924403" duration="4639000" />
+      <workItem from="1508901924403" duration="5619000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4639000" />
+    <option name="totallyTimeSpent" value="5619000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="958" y="0" width="482" height="900" extended-state="6" />
+    <frame x="722" y="0" width="718" height="900" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21621622" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21520804" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5050215" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -229,14 +223,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/contacts/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/contacts/src/ImageInputs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
@@ -289,14 +275,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/contacts/src/utils/ContactsAPI.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="21" lean-forward="false" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/contacts/src/index.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2805">
@@ -313,20 +291,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/contacts/src/ListContacts.js">
+    <entry file="file://$PROJECT_DIR$/contacts/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
+        <state relative-caret-position="15">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/contacts/src/App.js">
+    <entry file="file://$PROJECT_DIR$/contacts/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="45" column="39" lean-forward="true" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="39" />
+        <state relative-caret-position="120">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/contacts/src/utils/ContactsAPI.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="33" lean-forward="false" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/contacts/src/ListContacts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="20" column="30" lean-forward="false" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
