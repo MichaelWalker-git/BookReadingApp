@@ -12,6 +12,7 @@
 
 html {
     color: #222;
+    font-family: "Oswald", sans-serif;
     font-size: 1em;
     line-height: 1.4;
 }
@@ -97,59 +98,226 @@ textarea {
 
 .firstViewContainer {
     display: flex;
-    border:10px solid goldenrod;
     flex-direction: column;
 }
 
 .inputContainer {
-    border:10px solid blueviolet;
     display: flex;
     flex-direction: row;
+    /*flex-flow:;*/
+    color: #ffffff;
+    /*text-align: center;*/
+    width: auto;
+    flex-grow: 1;
 }
 
 .calcResults {
     display: flex;
-    border:10px solid goldenrod;
     flex-direction: column;
+    width: auto;
 }
 
 .results {
-    border: 10px solid orange;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
+ #buttonItems {
+     margin-left: auto;
+     margin-right: auto;
+     min-height: 1px;
+     position: relative;
+ }
 
-.timeData {
-    color: green;
+ .calcContainer{
+     display: flex;
+     padding: 20px 60px 20px 60px;
+ }
+
+ #reset {
+     font-size: 19px;
+     padding: 5px 40px 5px 40px;
+     -webkit-border-radius: 1px;
+     border-color: #ffffff;
+     background-color: #ed1c2e;
+     background: linear-gradient(#ed1c2e, #ed1c2e);
+     background-image: linear-gradient(rgb(237, 28, 46), rgb(237, 28, 46));
+     background-position-x: initial;
+     background-position-y: initial;
+     background-size: initial;
+     background-repeat-x: initial;
+     background-repeat-y: initial;
+     background-attachment: initial;
+     background-origin: initial;
+     background-clip: initial;
+     background-color: #ed1c2e;
+     color: #ffffff;
+     border-width: 1px;
+     border-style: solid;
+     font-weight: bold;
+     text-transform: uppercase;
+     letter-spacing: 0.8px;
+     display: inline-block;
+     -webkit-appearance: none;
+     /*border: 0;*/
+     /*outline: 0;*/
+     vertical-align: baseline;
+     text-align: center;
+ }
+
+ #calculate {
+     font-family: Oswald, sans-serif;
+     font-weight: bold ;
+     font-size: 19px;
+     color: #ed1b2e;
+     padding: 5px 40px 5px 40px;
+     margin: 0px 10px 10px 0px;
+     background: linear-gradient(#ffffff, #cecece);
+     border-color: #ed1b2e;
+     background-image: linear-gradient(rgb(255, 255, 255), rgb(206, 206, 206));
+     background-position-x: initial;
+     background-position-y: initial;
+     background-size: initial;
+     background-attachment: initial;
+     background-origin: initial;
+     background-clip: initial;
+     background-color: initial;
+     text-transform: uppercase;
+     letter-spacing: 0.8px;
+     -webkit-border-radius: 0px;
+     border-width: 1px;
+     border-style: solid;
+     display: inline-block;
+     text-align: center;
+     line-height: 1.7;
+ }
+
+div#container {
+    width: 580px;
+    margin: 100px auto 0 auto;
+    padding: 20px;
+    background: #000;
+    border: 1px solid #1a1a1a;
 }
 
+/* HOVER STYLES */
+div#pop-up1 {
+    display: none;
+    position: absolute;
+    width: 280px;
+    padding: 10px;
+    background: #eeeeee;
+    color: #000000;
+    border: 1px solid #1a1a1a;
+    font-size: 90%;
+}
+
+div#pop-up2 {
+    display: none;
+    position: absolute;
+    width: 280px;
+    padding: 10px;
+    background: #eeeeee;
+    color: #000000;
+    border: 1px solid #1a1a1a;
+    font-size: 90%;
+}
+
+div#pop-up3 {
+    display: none;
+    position: absolute;
+    width: 280px;
+    padding: 10px;
+    background: #eeeeee;
+    color: #000000;
+    border: 1px solid #1a1a1a;
+    font-size: 90%;
+}
+
+div.calcResults{
+    display: none;
+}
+
+div.protip{
+    display: none;
+}
+div#mediaRunDiv{
+    display: none;
+}
+
+div#orMedia{
+    display: none;
+}
+
+div#customInput{
+    display: none;
+}
 .iconArea {
     display: flex;
-    border: 10px solid green;
+    flex-basis: 100%;
     flex-direction: row;
+    align-content: center;
+    text-align: center;
+}
+
+.inputResults {
+    display: block;
+    width: 100%;
 }
 
 .fileSpec{
     padding: 10px 5px 15px 20px;
-/*    background-color: rgb(4, 0, 0);
-*/}
+    background-color: #0a0a0a;
+}
 
-.transferSpec{
-/*    background-color: rgb(8, 26, 6);
-*/}
+#securityCheck {
+    /*width: 100%;*/
+    /*min-width: 80%;*/
+}
 
 
+h4 {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+}
+
+#specBand{
+    display: block;
+}
+
+.inputResults h6 {
+    color: #000000;
+    font-size: 22px;
+    font-weight: bolder;
+    line-height: 1.2;
+    font-family: Oswald, sans-serif;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: transparent;
+    padding: 0;
+}
 h1 {
     font-size: 20px
 }
 
 
+.reveal-if-active {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+}
 
-
-
-
-
+input[type="radio"]:checked ~ .reveal-if-active,
+input[type="checkbox"]:checked ~ .reveal-if-active {
+    opacity: 1;
+    max-height: 220px; /* little bit of a magic number :( */
+    overflow: visible;
+}
 
 
 /* ==========================================================================

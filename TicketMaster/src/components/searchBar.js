@@ -1,50 +1,34 @@
 /**
- * Created by miketran on 3/5/17.
+ * Created by miketran on 3/6/17.
  */
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../actions/index';
+import React, {Component} from 'react';
+import _ from 'lodash';
 
-class SearchBar extends Component {
+class SearchBar extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			searchTerm: 'the xx'
+			searchTerm: 'the XX'
 		};
-
-		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-	}
-	componentWillMount(){
-		this.props.searchConcerts(this.state.searchTerm);
+		this.onInputChange = this.onInputChange.bind(this);
 	}
 
-	handleChange(event){
-		this.setState({searchTerm: event.target.value});
-	}
-
-	handleSubmit(){
-		event.preventDefault();
-		this.props.searchConcerts(this.state.searchTerm);
+	onInputChange(term){
+		this.setState({searchTerm: term});
+		this.props.onSearchBarChange(term);
 	}
 
 	render(){
-		return (
-			<form onSubmit={this.handleSubmit}>
+		return(
+			<div className="search-bar">
 				<label>
 					Search Concerts Here:
-					<input type="text" value={this.state.value} onChange={this.handleChange} />
+					<input type="text" placeholder="The XX" onChange={event => this.onInputChange(event.target.value)} />
 				</label>
-				<input type="submit" value="Submit" />
-			</form>
+			</div>
 		);
 	}
+
 }
 
-function mapStateToProps(state){
-	return {
-		searchConcerts: state.searchConcerts
-	}
-}
-
-export default connect(mapStateToProps, actions)(SearchBar);
+export default SearchBar;
