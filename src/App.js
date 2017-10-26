@@ -17,6 +17,7 @@ class App extends React.Component {
 	componentDidMount(){
 		BooksAPI.getAll().then((books) => {
 			this.setState({books});
+			console.log(books)
 		})
 	}
 
@@ -28,8 +29,18 @@ class App extends React.Component {
 		console.log("Addbook", book)
 	};
 
-	deleteBook = (book) => {
+	/**
+	 * Add a book to the database.
+	 * @param book
+	 * @param {string} shelf
+	 */
+	moveBookToDiffShelf = (book, shelf) => {
 		console.log("book", book)
+	};
+
+
+	filterBooks = (query) => {
+
 	};
 
 	render() {
