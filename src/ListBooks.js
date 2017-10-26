@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 // import * as BooksAPI from './BooksAPI'
 import './App.css'
+import {Link} from 'react-router-dom';
+
 import Book from "./Book";
 
 class ListBooks extends Component {
@@ -64,7 +66,7 @@ class ListBooks extends Component {
 												<li key={book.id}>
 													<div className="book">
 														<div className="book-top">
-															<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+															<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}/>
 															<div className="book-shelf-changer">
 																<select>
 																	<option value="none" disabled>Move to...</option>
@@ -91,7 +93,7 @@ class ListBooks extends Component {
 												<li key={book.id}>
 													<div className="book">
 														<div className="book-top">
-															<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+															<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}/>
 															<div className="book-shelf-changer">
 																<select>
 																	<option value="none" disabled>Move to...</option>
@@ -118,7 +120,7 @@ class ListBooks extends Component {
 												<li key={book.id}>
 													<div className="book">
 														<div className="book-top">
-															<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+															<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}/>
 															<div className="book-shelf-changer">
 																<select>
 																	<option value="none" disabled>Move to...</option>
@@ -141,7 +143,7 @@ class ListBooks extends Component {
 							</div>
 						</div>
 						<div className="open-search">
-							<a onClick={() => console.log("add")}>Add a book</a>
+							<Link to='/add'>Add</Link>
 						</div>
 					</div>
 				)}

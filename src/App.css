@@ -43,6 +43,42 @@ body, .app {
     text-align: center;
 }
 
+.create-book-form {
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.create-book-details {
+    margin-left: 20px;
+}
+
+.create-book-details input {
+    width: 100%;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    font-size: inherit;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: 0;
+}
+
+
+.create-book-details button {
+    margin-top: 20px;
+    background: #ccc;
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: inherit;
+    border: none;
+    outline: 0;
+}
+
+
+
 .open-search {
     position: fixed;
     right: 25px;
@@ -85,7 +121,7 @@ body, .app {
     outline: none;
 }
 
-.close-search {
+.close-search a {
     display: block;
     top: 20px;
     left: 15px;
@@ -154,6 +190,7 @@ body, .app {
     background-size: 20px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
+
 .book-shelf-changer select {
     width: 100%;
     height: 100%;

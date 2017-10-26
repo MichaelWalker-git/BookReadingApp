@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route} from 'react-router-dom';
+import {Route, } from 'react-router-dom';
 
 import * as BooksAPI from './utils/BooksAPI';
 import './App.css'
@@ -10,23 +10,26 @@ import ListBooks from './ListBooks';
 
 class App extends React.Component {
 	state = {
-		books: []
+		books: [],
+		query: ''
 	};
 
 	componentDidMount(){
 		BooksAPI.getAll().then((books) => {
-			console.log(books, "BookAPi");
 			this.setState({books});
 		})
 	}
 
-
-	addBook = () => {
-		console.log("Addbook")
+	/**
+	 * Add a book to the database.
+	 * @param book
+	 */
+	addBook = (book) => {
+		console.log("Addbook", book)
 	};
 
-	deleteBook = () => {
-		console.log("deleteBook")
+	deleteBook = (book) => {
+		console.log("book", book)
 	};
 
 	render() {
@@ -40,8 +43,12 @@ class App extends React.Component {
 					}
 				/>
 				<Route
-					path='/add' render={()=> (<AddBook addBook={this.addBook}/>)
-				}
+					path='/add' render={( {history} ) => (
+						<AddBook addBook={(book) => {
+							this.addBook(book);
+							history.push('/');
+						}}/>
+					)}
 				/>
 			</div>
 		)
