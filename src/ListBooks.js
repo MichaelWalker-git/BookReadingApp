@@ -1,86 +1,73 @@
 import React, {Component} from 'react'
-// import * as BooksAPI from './BooksAPI'
 import './App.css'
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
+import Search from './Search';
+import Checkbox from './Checkbox';
 
 import Book from "./Book";
 
 class ListBooks extends Component {
+	static propTypes = {
+		moveBook: PropTypes.func.isRequired,
+		currentlyReadingBooks: PropTypes.array.isRequired,
+		readBooks: PropTypes.array.isRequired,
+		wantToReadBooks: PropTypes.array.isRequired,
+		query:PropTypes.string,
+		updateQuery: PropTypes.func.isRequired,
+	};
+
 	state = {
-		/**
-		 * TODO: Instead of using this state variable to keep track of which page
-		 * we're on, use the URL in the browser's address bar. This will ensure that
-		 * users can use the browser's back and forward buttons to navigate between
-		 * pages, as well as provide a good URL they can bookmark and share.
-		 */
-		showSearchPage: false,
+		selectedBookChange: '',
+		wantToRead: true,
+		currentlyReading: true,
+		read: true,
 	};
 
 
-	/**
-	 * Moves book to state.
-	 */
-	moveBook = () => {
+	createCheckboxes = (label) => (
+		<Checkbox
+			label={label}
+			handleCheckboxChange={this.handleCheckboxChange}
+			key={label}/>
+	);
 
-	};
-
-	/**
-	 * Search function
-	 */
-	search = () => {
-
+	handleCheckboxChange = (label) => {
+		console.log(label, "handleCheckbox");
+		if(label === "Want to Read"){
+			const currentState = this.state.wantToReadBooks;
+			this.setState({wantToReadBooks: !currentState})
+		} else if(label === "Currently Reading"){
+			const currentState = this.state.currentlyReading;
+			this.setState({currentlyReading: !currentState})
+		} else {
+			const currentState = this.state.read;
+			this.setState({read: !currentState})
+		}
 	};
 
 	render() {
-		const currentlyReadingBooks = this.props.books.filter((book) => book.shelf === 'currentlyReading');
-		const readBooks = this.props.books.filter((book) => book.shelf === 'read');
-		const wantToReadBooks = this.props.books.filter((book) => book.shelf === 'wantToRead');
-
+		const {currentlyReadingBooks,readBooks,
+			wantToReadBooks, query, updateQuery } = this.props;
 		return (
 			<div className="app">
-				{this.state.showSearchPage ? (
-					<div className="search-books">
-						<div className="search-books-bar">
-							<a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>
-							<div className="search-books-input-wrapper">
-								<input type="text" placeholder="Search by title or author"/>
-							</div>
-						</div>
-						<div className="search-books-results">
-							<ol className="books-grid">
-							</ol>
-						</div>
-					</div>
-				) : (
+				<Search
+					createCheckboxes={this.createCheckboxes}
+					query={query}
+					updateQuery={updateQuery}
+				/>
 					<div className="list-books">
 						<div className="list-books-title">
 							<h1>MyReads</h1>
 						</div>
-						<div className="list-books-content">
+						<div className="list-books-content" >
 							<div>
 								<div className="bookshelf">
 									<h2 className="bookshelf-title">Currently Reading</h2>
 									<div className="bookshelf-books">
 										<ol className="books-grid">
 											{currentlyReadingBooks.map((book) => (
-												<li key={book.id}>
-													<div className="book">
-														<div className="book-top">
-															<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}/>
-															<div className="book-shelf-changer">
-																<select>
-																	<option value="none" disabled>Move to...</option>
-																	<option value="currentlyReading">Currently Reading</option>
-																	<option value="wantToRead">Want to Read</option>
-																	<option value="read">Read</option>
-																	<option value="none">None</option>
-																</select>
-															</div>
-														</div>
-														<div className="book-title">{book.title}</div>
-														<div className="book-authors">{book.authors.map((auth => (<div key={auth}>{auth}</div>)))}</div>
-													</div>
-												</li>
+												<Book key={book.id} book={book} moveBook={this.props.moveBook}/>
 											))}
 										</ol>
 									</div>
@@ -89,25 +76,8 @@ class ListBooks extends Component {
 									<h2 className="bookshelf-title">Want to Read</h2>
 									<div className="bookshelf-books">
 										<ol className="books-grid">
-											{readBooks.map((book) => (
-												<li key={book.id}>
-													<div className="book">
-														<div className="book-top">
-															<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}/>
-															<div className="book-shelf-changer">
-																<select>
-																	<option value="none" disabled>Move to...</option>
-																	<option value="currentlyReading">Currently Reading</option>
-																	<option value="wantToRead">Want to Read</option>
-																	<option value="read">Read</option>
-																	<option value="none">None</option>
-																</select>
-															</div>
-														</div>
-														<div className="book-title">{book.title}</div>
-														<div className="book-authors">{book.authors.map((auth => (<div key={auth}>{auth}</div>)))}</div>
-													</div>
-												</li>
+											{ wantToReadBooks.map((book) => (
+												<Book key={book.id} book={book} moveBook={this.props.moveBook}/>
 											))}
 										</ol>
 									</div>
@@ -116,27 +86,10 @@ class ListBooks extends Component {
 									<h2 className="bookshelf-title">Read</h2>
 									<div className="bookshelf-books">
 										<ol className="books-grid">
-											{ wantToReadBooks.map((book) => (
-												<li key={book.id}>
-													<div className="book">
-														<div className="book-top">
-															<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}/>
-															<div className="book-shelf-changer">
-																<select>
-																	<option value="none" disabled>Move to...</option>
-																	<option value="currentlyReading">Currently Reading</option>
-																	<option value="wantToRead">Want to Read</option>
-																	<option value="read">Read</option>
-																	<option value="none">None</option>
-																</select>
-															</div>
-
-														</div>
-														<div className="book-title">{book.title}</div>
-														<div className="book-authors">{book.authors.map((auth => (<div key={auth}>{auth}</div>)))}</div>
-													</div>
-												</li>
-											))}
+											{readBooks.map((book) => (
+													<Book key={book.id} book={book} moveBook={this.props.moveBook}/>
+												)
+											)}
 										</ol>
 									</div>
 								</div>
@@ -146,7 +99,7 @@ class ListBooks extends Component {
 							<Link to='/add'>Add</Link>
 						</div>
 					</div>
-				)}
+				}
 			</div>
 		)
 	}

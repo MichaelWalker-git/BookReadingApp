@@ -8,6 +8,10 @@ class AddBook extends Component {
 		addBook: PropTypes.func.isRequired,
 	};
 
+	state = {
+		defaultSelect: 'none'
+	};
+
 	onFormSubmit = (e) => {
 		e.preventDefault();
 		const values = serializeForm(e.target, { hash: true });
