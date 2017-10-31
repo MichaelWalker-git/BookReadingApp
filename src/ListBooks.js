@@ -24,7 +24,10 @@ class ListBooks extends Component {
 		read: true,
 	};
 
-
+	/**
+	 * Creates checkboxes with the given label.
+	 * @param {string} label
+	 */
 	createCheckboxes = (label) => (
 		<Checkbox
 			label={label}
@@ -32,15 +35,18 @@ class ListBooks extends Component {
 			key={label}/>
 	);
 
+	/**
+	 * Filters the search results by showing what bookshelves can be shown.
+	 * @param {string} label
+	 */
 	handleCheckboxChange = (label) => {
-		console.log(label, "handleCheckbox");
 		if(label === "Want to Read"){
-			const currentState = this.state.wantToReadBooks;
-			this.setState({wantToReadBooks: !currentState})
+			const currentState = this.state.wantToRead;
+			this.setState({wantToRead: !currentState});
 		} else if(label === "Currently Reading"){
 			const currentState = this.state.currentlyReading;
 			this.setState({currentlyReading: !currentState})
-		} else {
+		} else if(label === "Read") {
 			const currentState = this.state.read;
 			this.setState({read: !currentState})
 		}
@@ -62,7 +68,7 @@ class ListBooks extends Component {
 						</div>
 						<div className="list-books-content" >
 							<div>
-								<div className="bookshelf">
+								{this.state.currentlyReading ? <div className="bookshelf">
 									<h2 className="bookshelf-title">Currently Reading</h2>
 									<div className="bookshelf-books">
 										<ol className="books-grid">
@@ -71,8 +77,8 @@ class ListBooks extends Component {
 											))}
 										</ol>
 									</div>
-								</div>
-								<div className="bookshelf">
+								</div> : ''}
+								{this.state.wantToRead ? (<div className="bookshelf">
 									<h2 className="bookshelf-title">Want to Read</h2>
 									<div className="bookshelf-books">
 										<ol className="books-grid">
@@ -81,8 +87,8 @@ class ListBooks extends Component {
 											))}
 										</ol>
 									</div>
-								</div>
-								<div className="bookshelf">
+								</div>) : ''}
+								{this.state.read ? (<div className="bookshelf">
 									<h2 className="bookshelf-title">Read</h2>
 									<div className="bookshelf-books">
 										<ol className="books-grid">
@@ -92,12 +98,15 @@ class ListBooks extends Component {
 											)}
 										</ol>
 									</div>
-								</div>
+								</div>) : ''}
 							</div>
 						</div>
 						<div className="open-search">
-							<Link to='/add'>Add</Link>
+							<Link to='/add' className='open-add-link'>Add</Link>
+							<br></br>
+							<Link to='/Search' className='open-search-link'>Search</Link>
 						</div>
+
 					</div>
 				}
 			</div>

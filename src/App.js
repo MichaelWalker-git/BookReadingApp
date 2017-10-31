@@ -7,6 +7,7 @@ import './App.css'
 
 import AddBook from './AddBook';
 import ListBooks from './ListBooks';
+import SearchBook from "./SearchBook";
 
 
 class App extends React.Component {
@@ -27,6 +28,7 @@ class App extends React.Component {
 	getCurrentBooks(){
 		BooksAPI.getAll().then((books) => {
 			if(books){
+				console.log(books);
 				this.setState({books});
 			}
 		})
@@ -64,6 +66,13 @@ class App extends React.Component {
 				this.getCurrentBooks();
 			})
 		}
+	};
+
+	errorSearch = () => {
+		this.state.notificationSystem.addNotification({
+			message: 'No Results Found With That Query',
+			level: 'error'
+		});
 	};
 
 
@@ -122,6 +131,16 @@ class App extends React.Component {
 						this.addBook(book);
 						history.push('/');
 					}}/>
+				)}
+				/>
+				<Route
+					path='/search' render={( {history} ) => (
+					<SearchBook moveBook={(status, book) => {
+						this.moveBookToDiffShelf(status, book);
+						history.push('/');
+					}}
+											errorSearch={this.errorSearch}
+					/>
 				)}
 				/>
 			</div>

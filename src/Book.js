@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import NotificationSystem from 'react-notification-system';
-
 
 class Book extends Component {
 	state = {
@@ -23,11 +21,12 @@ class Book extends Component {
 	};
 
 	render() {
+		const thumbnail = this.props.book.imageLinks ? this.props.book.imageLinks.thumbnail : './images/blank-white-book.jpg';
 		return (
 			<li key={this.props.book.id}>
 				<div className="book">
 					<div className="book-top">
-						<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.book.imageLinks.thumbnail})` }}/>
+						<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${thumbnail})` }}/>
 						<div className="book-shelf-changer">
 							<select onChange={this.moveBookToDiffShelf} value='none'>
 								<option value="none" disabled>Move to...</option>
