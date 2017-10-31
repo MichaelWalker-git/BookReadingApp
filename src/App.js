@@ -28,7 +28,6 @@ class App extends React.Component {
 	getCurrentBooks(){
 		BooksAPI.getAll().then((books) => {
 			if(books){
-				console.log(books);
 				this.setState({books});
 			}
 		})
@@ -39,7 +38,6 @@ class App extends React.Component {
 	 * @param book
 	 */
 	addBook = (book) => {
-		console.log(book);
 		// BooksAPI.addBook(book)
 		this.state.notificationSystem.addNotification({
 			message: 'Add API not documented; no connection',
@@ -68,6 +66,9 @@ class App extends React.Component {
 		}
 	};
 
+	/**
+	 * If no query is found in the search table, an error notifying the user of a NA query will be posted.
+	 */
 	errorSearch = () => {
 		this.state.notificationSystem.addNotification({
 			message: 'No Results Found With That Query',

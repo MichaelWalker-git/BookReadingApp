@@ -3,7 +3,6 @@ import React from 'react';
 const Search = (props) => {
 	const { updateQuery, query, handleFormSubmit, createCheckboxes } = props;
 
-
 	return (
 		<div className="search-books">
 			<div className="search-books-bar">
@@ -27,6 +26,5 @@ const Search = (props) => {
 		</div>
 	)
 };
-
 
 export default Search;

@@ -16,6 +16,10 @@ class SearchBook extends Component {
 		shelfFilter: 'none'
 	};
 
+	/**
+	 * Calls backend with search query. Updates state with search result books. Error will throw an error notification.
+	 * @param {string} e
+	 */
 	searchBackend = (e) => {
 		BooksAPI.search(e, 10).then((response) => {
 			if(response !== undefined){
@@ -23,7 +27,6 @@ class SearchBook extends Component {
 			}
 		}).then(error => {
 			this.props.errorSearch();
-			console.log(error)
 		})
 	};
 

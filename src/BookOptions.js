@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const BookOptions = ({}) => {
 	return (
 		<div className="book-shelf-changer">

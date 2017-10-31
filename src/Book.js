@@ -12,7 +12,7 @@ class Book extends Component {
 	/**
 	 * If there is a difference in shelf state for the given book, it calls moveBook to change the
 	 * shelf in the backend.
-	 * @param e
+	 * @param {object} e
 	 */
 	moveBookToDiffShelf = (e) => {
 		if(this.state.currentShelf !== e.target.value){

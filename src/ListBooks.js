@@ -54,7 +54,7 @@ class ListBooks extends Component {
 
 	render() {
 		const {currentlyReadingBooks,readBooks,
-			wantToReadBooks, query, updateQuery } = this.props;
+			wantToReadBooks, query, updateQuery, moveBook } = this.props;
 		return (
 			<div className="app">
 				<Search
@@ -93,7 +93,7 @@ class ListBooks extends Component {
 									<div className="bookshelf-books">
 										<ol className="books-grid">
 											{readBooks.map((book) => (
-													<Book key={book.id} book={book} moveBook={this.props.moveBook}/>
+													<Book key={book.id} book={book} moveBook={moveBook}/>
 												)
 											)}
 										</ol>
@@ -115,4 +115,3 @@ class ListBooks extends Component {
 }
 
 export default ListBooks;
-
