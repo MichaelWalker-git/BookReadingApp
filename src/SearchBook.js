@@ -18,7 +18,6 @@ class SearchBook extends Component {
 
 	searchBackend = (e) => {
 		BooksAPI.search(e, 10).then((response) => {
-			console.log(response);
 			if(response !== undefined){
 				this.setState({searchedBooks: response});
 			}
