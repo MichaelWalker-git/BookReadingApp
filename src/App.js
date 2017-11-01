@@ -23,17 +23,6 @@ class App extends React.Component {
 	}
 
 	/**
-	 * Get current set of books from DB.
-	 */
-	getCurrentBooks(){
-		BooksAPI.getAll().then((books) => {
-			if(books){
-				this.setState({books});
-			}
-		})
-	}
-
-	/**
 	 * Add a book to the database.
 	 * @param book
 	 */
@@ -45,9 +34,48 @@ class App extends React.Component {
 		});	};
 
 	/**
+	 * If no query is found in the search table, an error notifying the user of a NA query will be posted.
+	 */
+	errorSearch = () => {
+		this.state.notificationSystem.addNotification({
+			message: 'No Results Found With That Query',
+			level: 'error'
+		});
+	};
+
+	/**
+	 * Get current set of books from DB.
+	 */
+	getCurrentBooks = () => {
+		BooksAPI.getAll().then((books) => {
+			if(books){
+				this.setState({books});
+			}
+		})
+	};
+
+	/**
+	 * Gets particular book's shelf status
+	 * @param {number} id
+	 * @return {string}
+	 */
+	getBooksCurrentShelf = (id) => {
+		const foundBook = this.state.books.filter((book) => {
+			if (book.id === id) {
+				return book;
+			}
+		});
+		if(foundBook.length > 0){
+			return foundBook[0].shelf;
+		} else {
+			return 'none';
+		}
+	};
+
+	/**
 	 * Add a book to the database.
 	 * @param {string} newShelfStatus
-	 * @param {string} book
+	 * @param {object} book
 	 */
 	moveBookToDiffShelf = (newShelfStatus, book) => {
 		if(newShelfStatus === 'none'){
@@ -61,19 +89,17 @@ class App extends React.Component {
 					message: 'Successfully Changed Bookshelf',
 					level: 'success'
 				});
-				this.getCurrentBooks();
+
+				let updatedBooks = this.state.books;
+				const index = updatedBooks.indexOf(book);
+				book.shelf = newShelfStatus;
+				updatedBooks.splice(index, 1);
+				updatedBooks.push(book);
+				this.setState({
+					books: updatedBooks,
+				});
 			})
 		}
-	};
-
-	/**
-	 * If no query is found in the search table, an error notifying the user of a NA query will be posted.
-	 */
-	errorSearch = () => {
-		this.state.notificationSystem.addNotification({
-			message: 'No Results Found With That Query',
-			level: 'error'
-		});
 	};
 
 
@@ -141,6 +167,8 @@ class App extends React.Component {
 						history.push('/');
 					}}
 											errorSearch={this.errorSearch}
+											books={this.state.books}
+											getBookShelfStatus={this.getBooksCurrentShelf}
 					/>
 				)}
 				/>

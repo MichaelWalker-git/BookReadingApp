@@ -22,13 +22,14 @@ class Book extends Component {
 
 	render() {
 		const thumbnail = this.props.book.imageLinks ? this.props.book.imageLinks.thumbnail : './images/blank-white-book.jpg';
+		const authorArray = this.props.book.authors ? this.props.book.authors : ['No Author Cited'];
 		return (
 			<li key={this.props.book.id}>
 				<div className="book">
 					<div className="book-top">
 						<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${thumbnail})` }}/>
 						<div className="book-shelf-changer">
-							<select onChange={this.moveBookToDiffShelf} value='none'>
+							<select onChange={this.moveBookToDiffShelf} value='book.shelf'>
 								<option value="none" disabled>Move to...</option>
 								<option value="currentlyReading">Currently Reading</option>
 								<option value="wantToRead">Want to Read</option>
@@ -38,7 +39,7 @@ class Book extends Component {
 						</div>
 					</div>
 					<div className="book-title">{this.props.book.title}</div>
-					<div className="book-authors">{this.props.book.authors.map((auth => (<div key={auth}>{auth}</div>)))}</div>
+					<div className="book-authors">{authorArray.map((auth => (<div key={auth}>{auth}</div>)))}</div>
 				</div>
 			</li>
 		);

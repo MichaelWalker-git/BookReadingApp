@@ -3,10 +3,12 @@
     "escape-string-regexp": "^1.0.5",
     "form-serialize": "^0.7.2",
     "jdoc": "^0.2.0",
+    "lodash": "^4.17.4",
     "prop-types": "^15.6.0",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
-    "react-notification-system": "^0.2.16"
+    "react-notification-system": "^0.2.16",
+    "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"
