@@ -1,14 +1,15 @@
-import React from 'react'
-import {Route } from 'react-router-dom';
+import React from 'react';
+import {Route, Switch } from 'react-router-dom';
 import NotificationSystem from 'react-notification-system';
-import escapeRegExp from 'escape-string-regexp'
-import * as BooksAPI from './utils/BooksAPI';
-import './App.css'
+import escapeRegExp from 'escape-string-regexp';
+import update from 'react-addons-update';
 
+import * as BooksAPI from './utils/BooksAPI';
+import './App.css';
 import AddBook from './AddBook';
 import ListBooks from './ListBooks';
 import SearchBook from "./SearchBook";
-
+import NoMatch from './NoMatch';
 
 class App extends React.Component {
 	state = {
@@ -80,7 +81,7 @@ class App extends React.Component {
 	moveBookToDiffShelf = (newShelfStatus, book) => {
 		if(newShelfStatus === 'none'){
 			this.state.notificationSystem.addNotification({
-				message: 'No Shelf Selected',
+				message: 'Book removed',
 				level: 'error'
 			});
 		} else {
@@ -89,15 +90,12 @@ class App extends React.Component {
 					message: 'Successfully Changed Bookshelf',
 					level: 'success'
 				});
-
-				let updatedBooks = this.state.books;
-				const index = updatedBooks.indexOf(book);
-				book.shelf = newShelfStatus;
-				updatedBooks.splice(index, 1);
-				updatedBooks.push(book);
+				const index = this.state.books.indexOf(book);
+				const updatedArray = update(this.state.books, {[index]: {shelf: {$set: newShelfStatus}}});
 				this.setState({
-					books: updatedBooks,
+					books: updatedArray,
 				});
+				return response;
 			})
 		}
 	};
@@ -129,16 +127,15 @@ class App extends React.Component {
 		} else {
 			showingBooks = books;
 		}
-
 		//Filter books according to shelf.
-		currentlyReadingBooks = showingBooks.filter((book) => book.shelf === 'currentlyReading');
+		currentlyReadingBooks =  showingBooks.filter((book) => book.shelf === 'currentlyReading');
 		readBooks = showingBooks.filter((book) => book.shelf === 'read');
 		wantToReadBooks = showingBooks.filter((book) => book.shelf === 'wantToRead');
 
 		return (
 			<div className="app">
 				<NotificationSystem ref="notificationSystem" />
-
+				<Switch>
 				<Route
 					exact path='/' render={( {history}) => (
 					<ListBooks
@@ -172,6 +169,8 @@ class App extends React.Component {
 					/>
 				)}
 				/>
+					<Route component={NoMatch}/>
+				</Switch>
 			</div>
 		)
 	}

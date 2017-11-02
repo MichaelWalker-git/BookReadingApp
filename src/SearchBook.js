@@ -19,11 +19,12 @@ class SearchBook extends Component {
 
 
 	/**
-	 * Calls backend with search query. Updates state with search result books. Error will throw an error notification.
+	 * Calls backend with search query. Updates state with search result books.
 	 * @param {string} e
 	 */
 	searchBackend = (e) => {
-		BooksAPI.search(e, 10).then((response) => {
+		BooksAPI.search(e, 10)
+			.then((response) => {
 			if(response !== undefined){
 				const formattedBooks = response.map((book) => {
 					book['shelf'] = this.props.getBookShelfStatus(book.id);
@@ -31,8 +32,6 @@ class SearchBook extends Component {
 				});
 				this.setState({searchedBooks: formattedBooks});
 			}
-		}).then(error => {
-			this.props.errorSearch();
 		})
 	};
 
