@@ -18,7 +18,7 @@ const FormBook = (props) => {
 						<option  value="wantToRead">Want to Read</option>
 						<option  value="read">Read</option>
 					</select>
-					<button>Add Contact</button>
+					<button>{props.title}</button>
 				</div>
 			</form>
 		</div>

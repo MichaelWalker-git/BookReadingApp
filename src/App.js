@@ -28,11 +28,12 @@ class App extends React.Component {
 	 * @param book
 	 */
 	addBook = (book) => {
-		// BooksAPI.addBook(book)
+		// BooksAPI.addBook(book);
 		this.state.notificationSystem.addNotification({
 			message: 'Add API not documented; no connection',
-			level: 'failure'
-		});	};
+			level: 'error'
+		});
+	};
 
 	/**
 	 * If no query is found in the search table, an error notifying the user of a NA query will be posted.
@@ -79,25 +80,32 @@ class App extends React.Component {
 	 * @param {object} book
 	 */
 	moveBookToDiffShelf = (newShelfStatus, book) => {
-		if(newShelfStatus === 'none'){
-			this.state.notificationSystem.addNotification({
-				message: 'Book removed',
-				level: 'error'
-			});
-		} else {
-			BooksAPI.update(book, newShelfStatus).then((response) => {
+		BooksAPI.update(book, newShelfStatus).then((response) => {
+			const index = this.state.books.indexOf(book);
+			let updatedArray;
+			if (newShelfStatus === 'none') {
 				this.state.notificationSystem.addNotification({
-					message: 'Successfully Changed Bookshelf',
-					level: 'success'
+					message: 'Book removed',
+					level: 'error'
 				});
-				const index = this.state.books.indexOf(book);
-				const updatedArray = update(this.state.books, {[index]: {shelf: {$set: newShelfStatus}}});
-				this.setState({
-					books: updatedArray,
-				});
-				return response;
-			})
-		}
+			} else {
+					this.state.notificationSystem.addNotification({
+						message: 'Successfully Changed Bookshelf',
+						level: 'success'
+					});
+			}
+
+			if(index !== -1){
+				updatedArray = update(this.state.books, {[index]: {shelf: {$set: newShelfStatus}}});
+			} else {
+				book.shelf = newShelfStatus;
+				updatedArray = update(this.state.books, {$push: [book]});
+			}
+			this.setState({
+				books: updatedArray,
+			});
+			return response;
+		});
 	};
 
 

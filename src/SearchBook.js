@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Book from './Book';
 import * as BooksAPI from './utils/BooksAPI';
 import {Link} from 'react-router-dom';
+import {DebounceInput} from 'react-debounce-input';
 
 class SearchBook extends Component {
 	static propTypes = {
@@ -23,9 +24,15 @@ class SearchBook extends Component {
 	 * @param {string} e
 	 */
 	searchBackend = (e) => {
+		this.setState({searchedBooks: []});
+		if(e.length === 0){
+			return;
+		}
 		BooksAPI.search(e, 10)
 			.then((response) => {
-			if(response !== undefined){
+			if(response.error){
+				this.props.errorSearch();
+			} else {
 				const formattedBooks = response.map((book) => {
 					book['shelf'] = this.props.getBookShelfStatus(book.id);
 					return book;
@@ -47,12 +54,18 @@ class SearchBook extends Component {
 				<Link className='close-create-book' to='/'>Cancel</Link>
 				<h1>Search Books</h1>
 				<div className='create-book-details'>
-					<input type='text' className="search-book-details" name='bookSearchTerm' onChange={(event) => this.searchBackend(event.target.value)} placeholder='Search Term'/>
+					<DebounceInput
+						debounceTimeout={300}
+						type='text'
+						className="search-book-details"
+						name='bookSearchTerm'
+						onChange={(event) => this.searchBackend(event.target.value)}
+						placeholder='Search Term'/>
 				</div>
 				<div>
 					<div className='search-books-results'>
 						{currentlyReadingBooks.length ? (<div className="bookshelf">
-							<h2 className="bookshelf-title">Want to Read</h2>
+							<h2 className="bookshelf-title">Currently Reading</h2>
 							<div className="bookshelf-books">
 								<ol className="books-grid">
 									{ currentlyReadingBooks.map((book) => (
@@ -62,7 +75,7 @@ class SearchBook extends Component {
 							</div>
 						</div>) : ''}
 						{readBooks.length ? (<div className="bookshelf">
-							<h2 className="bookshelf-title">Want to Read</h2>
+							<h2 className="bookshelf-title">Read</h2>
 							<div className="bookshelf-books">
 								<ol className="books-grid">
 									{ readBooks.map((book) => (

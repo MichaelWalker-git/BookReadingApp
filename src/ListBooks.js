@@ -41,14 +41,17 @@ class ListBooks extends Component {
 	 */
 	handleCheckboxChange = (label) => {
 		if(label === "Want to Read"){
-			const currentState = this.state.wantToRead;
-			this.setState({wantToRead: !currentState});
+			return this.setState(previousState => {
+				return { wantToRead: !previousState }
+			});
 		} else if(label === "Currently Reading"){
-			const currentState = this.state.currentlyReading;
-			this.setState({currentlyReading: !currentState})
+			return this.setState(previousState => {
+				return { currentlyReading: !previousState }
+			});
 		} else if(label === "Read") {
-			const currentState = this.state.read;
-			this.setState({read: !currentState})
+			return this.setState(previousState => {
+				return { read: !previousState }
+			});
 		}
 	};
 
